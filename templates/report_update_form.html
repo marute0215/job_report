@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>就活報告書編集画面</h1></br>
+    <form action="{{url_for('report_update_exe')}}"method="post">
+        学籍番号：<input type="text"name="student_num" value={{ detail[0][0] }}><br>
+        氏名：<input type="text"name="name" value={{ detail[0][1] }}><br>
+        企業名：<input type="text"name="company" value={{ detail[0][2] }}><br>
+        業界:
+        <select size="1" name="industry" id="office54">
+            <option value={{ detail[0][3] }} selected>{{ detail[0][3] }}</option>
+            <option value="メーカー">メーカー</option>
+            <option value="商社">商社</option>
+            <option value="小売">小売</option>
+            <option value="金融">金融</option>
+            <option value="サービス">サービス</option>
+            <option value="ソフトウェア・通信">ソフトウェア・通信</option>
+            <option value="マスコミ">マスコミ</option>
+            <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+        </select><br>
+        職種：<input type="text"name="job" value={{ detail[0][4] }}><br>
+        1次試験日時:<input type="text"name="firsttest_time" value={{ detail[0][5] }}><br>
+        1次試験試験種類:
+        <select size="1" name="firsttest_type" id="office54">
+            <option value={{ detail[0][6] }} selected>{{ detail[0][6] }}</option>
+            <option value="筆記">筆記</option>
+            <option value="面接">面接</option>
+        </select><br>
+        2次試験日時:<input type="text"name="secondtest_time" value={{ detail[0][7] }}><br>
+        2次試験試験種類:
+        <select size="1" name="secondtest_type" id="office54">
+            <option value={{ detail[0][8] }} selected>{{ detail[0][8] }}</option>
+            <option value="筆記">筆記</option>
+            <option value="面接">面接</option>
+        </select><br>
+        3次試験日時:<input type="text"name="thaadtest_time" value={{ detail[0][9] }}><br>
+        3次試験試験種類:
+        <select size="1" name="thaadtest_type" id="office54">
+            <option value={{ detail[0][10] }} selected>{{ detail[0][10] }}</option>
+            <option value="筆記">筆記</option>
+            <option value="面接">面接</option>
+        </select><br>
+        試験内容
+        <textarea name="test_report" cols="50" rows="10">{{ detail[0][11] }}</textarea><br>
+        選考結果:
+        <select size="1" name="result_type" id="office54">
+            <option value={{ detail[0][12] }} selected>{{ detail[0][12] }}</option>
+            <option value="合格">合格</option>
+            <option value="不合格">不合格</option>
+            <option value="辞退">辞退</option>
+        </select><br>
+        <button type="submit">更新</button>
+
+    <a href="{{url_for('mypage')}}">ホームへ</a>
+</body>
+</html>

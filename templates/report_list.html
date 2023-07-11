@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>検索結果</h1>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>企業名</th>
+            <th>業界</th>
+            <th>職種</th>
+            <th>選考結果</th>
+            <th>学籍番号</th>
+            <th>氏名</th>
+            <th>登録日</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in reports %}
+        <tr>
+            <td>{{ report[1] }}</td>
+            <td>{{ report[2] }}</td>
+            <td>{{ report[3] }}</td>
+            <td>{{ report[4] }}</td>
+            <td>{{ report[0] }}</td>
+            <td>{{ report[5] }}</td>
+            <td>{{ report[6] }}</td>
+            <td>
+				<form action="{{url_for('report_detail')}}" method="post">
+					<input type="hidden" name="student_num" value={{ report[0] }}>
+                    <input type="hidden" name="company" value={{ report[1] }}>
+					<input type="submit" value="詳細">
+				</form>
+			</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

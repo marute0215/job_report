@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>学生登録画面</h3>
+    {% if error != null %}
+    <p style="color:red">{{error}}</p>
+    {% endif %}
+    <form action="{{url_for('teacher.student_register_exe')}}"method="post">
+        <input type="hidden"name="name" value="未登録"><br>
+        <input type="hidden"name="mail" value="未登録"><br>
+        <input type="hidden"name="grade" value="未登録"><br>
+        <input type="hidden"name="class" value="未登録"><br>
+        入学年度：令和<input type="text"name="year" value="{{year}}">年度<br>
+        入学年：西暦下２桁<input type="text"name="year2" value="{{year2}}">年<br>
+        学科:
+        <select size="1" name="department" id="office54">
+            <option value="11">情報システム科</option>
+            <option value="12">情報ビジネス科</option>
+            <option value="13">高度情報工学科</option>
+            <option value="14">デザイン科</option>
+        </select><br>
+        クラス人数:<input type="text"name="class_num" value="{{class_num}}">人<br>
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>
