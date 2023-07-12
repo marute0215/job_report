@@ -88,3 +88,12 @@ def student_search_exe():
     student_list=db.teacher_select_student(name, department, grade, clas)
     
     return render_template('admin_student_list.html', students=student_list)
+
+@admin_bp.route('/report_del', methods=['POST'])
+def report_del():
+    student_num = request.form.get('student_num')
+    company=request.form.get('company')
+    
+    db.report_del(company, student_num)
+    
+    return redirect(url_for('admin.admin_top'))

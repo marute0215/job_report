@@ -103,8 +103,16 @@ def admin_approval(company, student_num, approval):
     cursor.close()
     connection.close()
 
-
-
+def report_del(company, student_num):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "DELETE FROM report WHERE student_num = %s and company = %s;"
+    
+    cursor.execute(sql, (student_num,company))
+    connection.commit()
+    
+    cursor.close()
+    connection.close()
 
 
 

@@ -31,6 +31,12 @@
         <input type="hidden" name="company" value={{ detail[0][2] }}>
         <input type="hidden" name="teacher_approval" value="承認">
         <input type="submit" value="承認">
+    </form></br>
+
+    <form action="{{url_for('admin.report_del')}}" method="post">
+        <input type="hidden" name="student_num" value={{ detail[0][0] }}>
+        <input type="hidden" name="company" value={{ detail[0][2] }}>
+        <input type="submit" value="削除する">
     </form>
 
     <a href="{{url_for('admin.admin_top')}}">ホームへ</a>
