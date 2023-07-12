@@ -157,7 +157,33 @@ def teacher_delete_student(sa):
     cursor.close()
     connection.close()
 
+def select_teacher_account(name):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT * FROM TeacherAccount where name = %s"
+    
+    cursor.execute(sql, (name, ))
+    rows = cursor.fetchall()
+    
+    cursor.close()
+    connection.close()
+    return rows
 
+def update_teacher_account(name, password):
+    sql='UPDATE TeacherAccount SET salt = %s, password = %s  WHERE name = %s'
+    
+    salt=get_salt() # ソルトの生成
+    hashed_password=get_hash(password, salt) # 生成したソルトでハッシュ
+   
+    connection=get_connection()
+    cursor=connection.cursor()
+        
+    cursor.execute(sql, (salt, hashed_password, name))
+    connection.commit()
+        
+
+    cursor.close()
+    connection.close()
 
 
 

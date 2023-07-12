@@ -108,3 +108,25 @@ def student_del():
         db.teacher_delete_student(sa)
     
     return render_template('teacher_top.html')
+
+
+@teacher_bp.route('/account_search', methods=['GET'])
+def account_search():
+    name = session['user_name']
+    
+    teacher_list=db.select_teacher_account(name)
+    
+    return render_template('teacher_account.html', account=teacher_list)
+
+@teacher_bp.route('/account_update', methods=['GET'])
+def account_update():
+    
+    return render_template('teacher_account_update.html')
+
+@teacher_bp.route('/teacher_update_exe', methods=['POST'])
+def teacher_update_exe():
+    name = session['user_name']
+    password=request.form.get('password')
+
+    db.update_teacher_account(name, password)
+    return redirect(url_for('teacher.teacher_top'))
