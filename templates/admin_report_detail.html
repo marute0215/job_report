@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>就活報告書詳細表示</h1></br>
+    <p>学籍番号：{{ detail[0][0] }}</p></br>
+    <p>氏名：{{ detail[0][1] }}</p></br>
+    <p>企業名：{{ detail[0][2] }}</p></br>
+    <p>業界：{{ detail[0][3] }}</p></br>
+    <p>職種：{{ detail[0][4] }}</p></br>
+    <p>１次試験日時：{{ detail[0][5] }}</p></br>
+    <p>１次試験種類：{{ detail[0][6] }}</p></br>
+    <p>２次試験日時：{{ detail[0][7] }}</p></br>
+    <p>２次試験種類：{{ detail[0][8] }}</p></br>
+    <p>３次試験日時：{{ detail[0][9] }}</p></br>
+    <p>３次試験種類：{{ detail[0][10] }}</p></br>
+    <p>試験内容：{{ detail[0][11] }}</p></br>
+    <p>選考結果：{{ detail[0][12] }}</p></br>
+    <p>担任承認：{{ detail[0][13] }}</p></br>
+    <p>キャリア支援課承認：{{ detail[0][14] }}</p></br>
+    <p>登録日：{{ detail[0][15] }}</p></br>
+
+
+    <form action="{{url_for('admin.admin_approval')}}" method="post">
+        <input type="hidden" name="student_num" value={{ detail[0][0] }}>
+        <input type="hidden" name="company" value={{ detail[0][2] }}>
+        <input type="hidden" name="teacher_approval" value="承認">
+        <input type="submit" value="承認">
+    </form>
+
+    <a href="{{url_for('admin.admin_top')}}">ホームへ</a>
+</body>
+</html>

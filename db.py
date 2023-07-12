@@ -45,6 +45,97 @@ def insert_teacher(name, mail,password):
         connection.close()
     return count
 
+def admin_select_report(company, industry, result_type, grade, clas):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT report.student_num, report.user_name, studentaccount.grade,\
+                    studentaccount.class, report.company, report.industry, \
+                    report.result_type, report.teachar_approval, report.admin_approval,\
+                    TO_CHAR(report.register_date, 'YYYY/MM/DD HH24:MI') AS register_date\
+            FROM report\
+            INNER JOIN studentaccount ON report.student_num = studentaccount.student_num\
+            WHERE report.company LIKE %s \
+                AND report.industry LIKE %s \
+                AND report.result_type LIKE %s \
+                AND studentaccount.grade LIKE %s \
+                AND studentaccount.class LIKE %s;"
+    
+    key='%'+company+'%'
+    key2='%'+industry+'%'
+    key3='%'+result_type+'%'
+    key4='%'+grade+'%'
+    key5='%'+clas+'%'
+    cursor.execute(sql, (key, key2, key3, key4, key5))
+    rows = cursor.fetchall()
+    
+    cursor.close()
+    connection.close()
+    return rows
+
+def admin_report_detail(company, student_num):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT student_num, user_name, company, industry, job,\
+            firsttest_time, firsttest_type,\
+            secondtest_time, secondtest_type,\
+            thaadtest_time, thaadtest_type,\
+            tesr_report, result_type, teachar_approval, admin_approval,\
+            TO_CHAR(register_date, 'YYYY/MM/DD HH24:MI') AS register_date\
+            FROM Report\
+            where company = %s and student_num = %s"
+
+    cursor.execute(sql, (company, student_num))
+    rows = cursor.fetchall()
+    
+    cursor.close()
+    connection.close()
+    return rows
+
+def admin_approval(company, student_num, approval):
+    sql='UPDATE report SET admin_approval = %s where student_num = %s and company = %s'   
+        
+    connection=get_connection()
+    cursor=connection.cursor()
+    
+    cursor.execute(sql, (approval,student_num, company))
+    connection.commit()
+    
+    cursor.close()
+    connection.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
