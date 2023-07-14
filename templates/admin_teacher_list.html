@@ -12,27 +12,21 @@
     <thead>
         <tr>
             <th></th>
-            <th>学籍番号</th>
             <th>氏名</th>
-            <th>学年</th>
-            <th>組</th>
-            <th>学科</th>
+            <th>メール</th>
         </tr>
     </thead>
     <tbody>
-    <form action="{{url_for('admin.student_del')}}" method="post">
-        {% for student in students %}
+    <form action="{{url_for('admin.teacher_del')}}" method="post">
+        {% for teacher in teachers %}
         <tr>
             <td>
                 <div>
-                    <input type="checkbox" id="checkbox1" name="check" value={{ student[0] }}>
+                    <input type="checkbox" id="checkbox1" name="check" value={{ teacher[0] }}>
                </div>
             </td>
-            <td>{{ student[0] }}</td>
-            <td>{{ student[1]}}</td>
-            <td>{{ student[2] }}</td>
-            <td>{{ student[3] }}</td>
-            <td>{{ student[4] }}</td>
+            <td>{{ teacher[0]}}</td>
+            <td>{{ teacher[1] }}</td>
         </tr>
         {% endfor %}
         <button type="submit">削除する</button>

@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
     <title>Document</title>
 </head>
 <body>
-    <h3>ログイン画面</h3>
+    <h1>就活報告書管理システム</h1>
+    <div id="form">
+    <p class="form-title">ログイン</p>
     {% if error != null %}
         <p style="color:red">{{error}}</p>
     {% endif %}
@@ -15,15 +18,21 @@
         <p style="color:blue">{{msg}}</p>
     {% endif %}
     <form action="{{url_for('login')}}"method="post">
-        ユーザ名:<input type="text"name="username"value="{{data.user_name if data is defined else ''}}"><br>
-        パスワード：<input type="password"name="password"value="{{data.password if data is defined else ''}}"><br>
-        ユーザータイプ
+        <p>ユーザ名:</p>
+        <p class = "name"><input type="text"name="username"value="{{data.user_name if data is defined else ''}}"></p><br>
+        
+        <p>パスワード：</p>
+        <p class = "pass"><input type="password"name="password"value="{{data.password if data is defined else ''}}"><br></p>
+        <p>ユーザータイプ</p>
+        <p class = "name">
         <select size="1" name="usertype" id="office54">
             <option value="admin">admin</option>
             <option value="teacher">teacher</option>
             <option value="student">student</option>
         </select>
-        <button type="submit">ログイン</button>
+        </p>
+        <p class = "submit"><button type="submit">ログイン</button></p>
     </form>
+    </div>
 </body>
 </html>

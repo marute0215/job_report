@@ -1,56 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>就活報告書検索画面</h3>
-    {% if error != null %}
-    <p style="color:red">{{error}}</p>
-    {% endif %}
-    <form action="{{url_for('admin.report_search_exe')}}"method="post">
-        企業名：<input type="text"name="company" value="{{company}}"><br>
-        業界:
-        <select size="1" name="industry" id="office54">
-            <option value="">未選択</option>
-            <option value="メーカー">メーカー</option>
-            <option value="商社">商社</option>
-            <option value="小売">小売</option>
-            <option value="金融">金融</option>
-            <option value="サービス">サービス</option>
-            <option value="ソフトウェア・通信">ソフトウェア・通信</option>
-            <option value="マスコミ">マスコミ</option>
-            <option value="官公庁・公社・団体">官公庁・公社・団体</option>
-        </select><br>
-        選考結果:
-        <select size="1" name="result_type" >
-            <option value="">未選択</option>
-            <option value="合格">合格</option>
-            <option value="不合格">不合格</option>
-            <option value="辞退">辞退</option>
-        </select><br>
 
-        クラス条件<br>
-        学年:
-        <select size="1" name="grade" id="office54">
-            <option value="">未選択</option>
-            <option value="1年">1年</option>
-            <option value="2年">2年</option>
-            <option value="3年">3年</option>
-            <option value="4年">4年</option>
-        </select><br>
-        組:
-        <select size="1" name="class" id="office54">
-            <option value="">未選択</option>
-            <option value="1組">1組</option>
-            <option value="2組">2組</option>
-            <option value="3組">3組</option>
-            <option value="4組">4組</option>
-        </select><br>
-        <button type="submit">検索</button>
-    </form>
-</body>
-</html>
+{% extends "admin_top.html" %}
+
+{% block title %}
+<title>管理者＿報告書検索画面</title>
+{% endblock %}
+ 
+{% block content %}
+
+<h3>就活報告書検索画面</h3>
+{% if error != null %}
+<p style="color:red">{{error}}</p>
+{% endif %}
+<form action="{{url_for('admin.report_search_exe')}}"method="post">
+    企業名：<input type="text"name="company" value="{{company}}"><br>
+    業界:
+    <select size="1" name="industry" id="office54">
+        <option value="">未選択</option>
+        <option value="メーカー">メーカー</option>
+        <option value="商社">商社</option>
+        <option value="小売">小売</option>
+        <option value="金融">金融</option>
+        <option value="サービス">サービス</option>
+        <option value="ソフトウェア・通信">ソフトウェア・通信</option>
+        <option value="マスコミ">マスコミ</option>
+        <option value="官公庁・公社・団体">官公庁・公社・団体</option>
+    </select><br>
+    選考結果:
+    <select size="1" name="result_type" >
+        <option value="">未選択</option>
+        <option value="合格">合格</option>
+        <option value="不合格">不合格</option>
+        <option value="辞退">辞退</option>
+    </select><br>
+
+    クラス条件<br>
+    学年:
+    <select size="1" name="grade" id="office54">
+        <option value="">未選択</option>
+        <option value="1年">1年</option>
+        <option value="2年">2年</option>
+        <option value="3年">3年</option>
+        <option value="4年">4年</option>
+    </select><br>
+    組:
+    <select size="1" name="class" id="office54">
+        <option value="">未選択</option>
+        <option value="1組">1組</option>
+        <option value="2組">2組</option>
+        <option value="3組">3組</option>
+        <option value="4組">4組</option>
+    </select><br>
+    <button type="submit">検索</button>
+</form>
+
+{% endblock %}
+   

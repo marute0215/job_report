@@ -97,3 +97,28 @@ def report_del():
     db.report_del(company, student_num)
     
     return redirect(url_for('admin.admin_top'))
+
+@admin_bp.route('/teacher_list')
+def teacher_list():
+
+    teacher_list=db.teacher_list()
+    
+    return render_template('admin_teacher_list.html', teachers=teacher_list)
+
+@admin_bp.route('/student_del', methods=['POST'])
+def student_del():
+    checks=request.form.getlist('check')
+
+    for sa in checks:
+        db.teacher_delete_student(sa)
+    
+    return render_template('admin_top.html')
+
+@admin_bp.route('/teacher_del', methods=['POST'])
+def teacher_del():
+    checks=request.form.getlist('check')
+
+    for sa in checks:
+        db.admin_delete_teacher(sa)
+    
+    return render_template('admin_top.html')

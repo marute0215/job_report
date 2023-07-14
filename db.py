@@ -114,7 +114,28 @@ def report_del(company, student_num):
     cursor.close()
     connection.close()
 
+def teacher_list():
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT name, mail FROM TeacherAccount;"
+    
+    cursor.execute(sql,)
+    rows = cursor.fetchall()
+    
+    cursor.close()
+    connection.close()
+    return rows
 
+def admin_delete_teacher(sa):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "DELETE FROM teacheraccount WHERE mail = %s;"
+    
+    cursor.execute(sql, (sa,))
+    connection.commit()
+    
+    cursor.close()
+    connection.close()
 
 
 
