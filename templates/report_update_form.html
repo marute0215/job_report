@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>就活報告書編集画面</h1></br>
+{% extends "admin_top.html" %}
+
+{% block title %}
+<title>学生＿報告書編集画面</title>
+{% endblock %}
+ 
+{% block content %}
+    <h3>就活報告書編集画面</h3></br>
     <form action="{{url_for('report_update_exe')}}"method="post">
         学籍番号：<input type="text"name="student_num" value={{ detail[0][0] }}><br>
         氏名：<input type="text"name="name" value={{ detail[0][1] }}><br>
@@ -58,5 +56,4 @@
         <button type="submit">更新</button>
 
     <a href="{{url_for('mypage')}}">ホームへ</a>
-</body>
-</html>
+   {% endblock %}

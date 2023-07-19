@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>就活報告書詳細表示</h1></br>
+{% extends "admin_top.html" %}
+
+{% block title %}
+<title>学生＿報告詳細画面</title>
+{% endblock %}
+ 
+{% block content %}
+    <h3>就活報告書詳細表示</h3></br>
     <p>学籍番号：{{ detail[0][0] }}</p></br>
     <p>氏名：{{ detail[0][1] }}</p></br>
     <p>企業名：{{ detail[0][2] }}</p></br>
@@ -24,5 +22,4 @@
     <p>登録日：{{ detail[0][13] }}</p></br>
 
     <a href="{{url_for('mypage')}}">ホームへ</a>
-</body>
-</html>
+{% endblock %}

@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "admin_top.html" %}
+
+{% block title %}
+<title>学生＿アカウント編集画面</title>
+{% endblock %}
+ 
+{% block content %}
     <h3>アカウント編集画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
@@ -38,5 +36,4 @@
         パスワード：<input type="password"name="password" value="{{password}}"><br>
         <button type="submit">更新</button>
     </form>
-</body>
-</html>
+    {% endblock %}

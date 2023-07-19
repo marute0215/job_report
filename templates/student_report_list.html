@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>検索結果</h1>
-  <table class="table table-striped">
+{% extends "admin_top.html" %}
+
+{% block title %}
+<title>学生＿報告書登録画面</title>
+{% endblock %}
+ 
+{% block content %}
+    <h3>検索結果</h3>
+  <table class="table table-dark table-hover">
     <thead>
         <tr>
             <th>企業名</th>
@@ -41,5 +39,4 @@
         {% endfor %}
     </tbody>
   </table>
-</body>
-</html>
+  {% endblock %}
