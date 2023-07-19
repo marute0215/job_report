@@ -5,15 +5,24 @@
 {% endblock %}
  
 {% block content %}
-    <h3>就活報告書登録画面</h3>
+
+<div id="form">
+
+    <h3 class="form-title">就活報告書登録画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
     <form action="{{url_for('report_register_exe')}}"method="post">
-        学籍番号：<input type="text"name="student_num" value="{{student_num}}"><br>
-        氏名：<input type="text"name="name" value="{{name}}"><br>
-        企業名：<input type="text"name="company" value="{{company}}"><br>
-        業界:
+        <p>学籍番号</p>
+        <p class = "name"><input type="text"name="student_num" value="{{student_num}}"></p>
+
+        <p>氏名</p>
+        <p class = "name"><input type="text"name="name" value="{{name}}"></p>
+
+        <p>企業名</p>
+        <p class = "name"><input type="text"name="company" value="{{company}}"></p>
+        <p>業界</p>
+        <p class = "name">
         <select size="1" name="industry" id="office54">
             <option value="メーカー">メーカー</option>
             <option value="商社">商社</option>
@@ -23,36 +32,60 @@
             <option value="ソフトウェア・通信">ソフトウェア・通信</option>
             <option value="マスコミ">マスコミ</option>
             <option value="官公庁・公社・団体">官公庁・公社・団体</option>
-        </select><br>
-        職種：<input type="text"name="job" value="{{job}}"><br>
-        1次試験日時:<input type="text"name="firsttest_time" value="{{firsttest_time}}"><br>
-        1次試験試験種類:
+        </select>
+        </p>
+
+        <p>職種</p>
+        <p class = "name"><input type="text"name="job" value="{{job}}"></p>
+
+        <p>1次試験日時</p>
+        <p class = "name"><input type="text"name="firsttest_time" value="{{firsttest_time}}"></p>
+
+        <p>1次試験試験種類</p>
+        <p class = "name">
         <select size="1" name="firsttest_type" id="office54">
             <option value="筆記">筆記</option>
             <option value="面接">面接</option>
-        </select><br>
-        2次試験日時:<input type="text"name="secondtest_time" value="{{secondtest_time}}"><br>
-        2次試験試験種類:
+        </select>
+        </p>
+
+        <p>2次試験日時</p>
+        <p class = "name"><input type="text"name="secondtest_time" value="{{secondtest_time}}"></p>
+
+        <p>2次試験試験種類</p>
+        <p class = "name">
         <select size="1" name="secondtest_type" id="office54">
             <option value="筆記">筆記</option>
             <option value="面接">面接</option>
-        </select><br>
-        3次試験日時:<input type="text"name="thaadtest_time" value="{{thaadtest_time}}"><br>
-        3次試験試験種類:
+        </select>
+        </p>
+
+        <p>3次試験日時</p>
+        <p class = "name"><input type="text"name="thaadtest_time" value="{{thaadtest_time}}"></p>
+
+        <p>3次試験試験種類</p>
+        <p class = "name">
         <select size="1" name="thaadtest_type" id="office54">
             <option value="筆記">筆記</option>
             <option value="面接">面接</option>
-        </select><br>
-        試験内容
-        <textarea name="test_report" cols="50" rows="10"></textarea><br>
-        <input type="hidden" name="teacher_approval" value="未承認"><br>
-        <input type="hidden" name="admin_approval" value="未承認"><br>
-        試験結果:
+        </select>
+        </p>
+
+        <p>試験内容</p>
+        <p class = "name"><textarea name="test_report" cols="50" rows="10"></textarea></p>
+
+        <input type="hidden" name="teacher_approval" value="未承認">
+        <input type="hidden" name="admin_approval" value="未承認">
+
+        <p>試験結果</p>
+        <p class = "name">
         <select size="1" name="result_type" id="office54">
             <option value="合格">合格</option>
             <option value="不合格">不合格</option>
             <option value="辞退">辞退</option>
-        </select><br>
-        <button type="submit">登録</button>
+        </select>
+        </p>
+        <p class = "submit"><button type="submit">登録</button></p>
     </form>
-    {% endblock %}
+</div>
+{% endblock %}

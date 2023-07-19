@@ -5,13 +5,18 @@
 {% endblock %}
  
 {% block content %}
-    <h3>就活報告書検索画面</h3>
+<div id="form">
+
+    <h3 class="form-title">就活報告書検索画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
     <form action="{{url_for('report_search_exe')}}"method="post">
-        企業名：<input type="text"name="company" value="{{company}}"><br>
-        業界:
+        <p>企業名</p>
+        <p class = "name"><input type="text"name="company" value="{{company}}"></p>
+
+        <p>業界</p>
+        <p class = "name">
         <select size="1" name="industry" id="office54">
             <option value="">未選択</option>
             <option value="メーカー">メーカー</option>
@@ -22,14 +27,19 @@
             <option value="ソフトウェア・通信">ソフトウェア・通信</option>
             <option value="マスコミ">マスコミ</option>
             <option value="官公庁・公社・団体">官公庁・公社・団体</option>
-        </select><br>
-        選考結果:
+        </select>
+        </p>
+
+        <p>選考結果</p>
+        <p class = "name">
         <select size="1" name="result_type" >
             <option value="">未選択</option>
             <option value="合格">合格</option>
             <option value="不合格">不合格</option>
             <option value="辞退">辞退</option>
-        </select><br>
-        <button type="submit">検索</button>
+        </select>
+        </p>
+        <p class = "submit"><button type="submit">検索</button></p>
     </form>
-    {% endblock %}
+</div>
+{% endblock %}

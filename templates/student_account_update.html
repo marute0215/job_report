@@ -5,35 +5,52 @@
 {% endblock %}
  
 {% block content %}
-    <h3>アカウント編集画面</h3>
+<div id="form">
+    <h3 "form-title">アカウント編集画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
     <form action="{{url_for('student_update_exe')}}"method="post">
-        ユーザー名：<input type="text"name="name" value="{{name}}"><br>
-        メール：<input type="text"name="mail" value="{{mail}}"><br>
-        学年:
+        <p>ユーザー名</p>
+        <p class = "name"><input type="text"name="name" value="{{name}}"></p>
+
+        <p>メール</p>
+        <p class = "name"><input type="text"name="mail" value="{{mail}}"></p>
+
+        <p>学年</p>
+        <p class = "name">
         <select size="1" name="grade" id="office54">
             <option value="1年">1年</option>
             <option value="2年">2年</option>
             <option value="3年">3年</option>
             <option value="4年">4年</option>
-        </select><br>
-        組:
+        </select>
+        </p>
+
+        <p>組</p>
+        <p class = "name">
         <select size="1" name="class" id="office54">
             <option value="1組">1組</option>
             <option value="2組">2組</option>
             <option value="3組">3組</option>
             <option value="4組">4組</option>
-        </select><br>
-        学科:
+        </select>
+        </p>
+
+        <p>学科</p>
+        <p class = "name">
         <select size="1" name="department" id="office54">
             <option value="情報システム科">情報システム科</option>
             <option value="情報ビジネス科">情報ビジネス科</option>
             <option value="デザイン科">デザイン科</option>
             <option value="高度情報工学科">高度情報工学科</option>
-        </select><br>
-        パスワード：<input type="password"name="password" value="{{password}}"><br>
-        <button type="submit">更新</button>
+        </select>
+        </P>
+
+        <p>パスワード</p>
+        <p class = "name"><input type="password"name="password" value="{{password}}"></p>
+        
+        <p class = "submit"><button type="submit">更新</button></p>
     </form>
-    {% endblock %}
+</div>
+{% endblock %}
