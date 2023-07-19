@@ -5,34 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     {% block title %}
     <title>管理者メニュー</title>
     {% endblock %}
 </head>
 <body>
     <h1>就活報告書管理システム</h1>
+    <div style="text-align: right;">
+        <a class = "logout" href="{{url_for('logout')}}">ログアウト</a>
+    </div>
     {% block content %}
-    <h3>マイページ</h3>
-    </br>
-    </br>
-    <a class = "logout" href="{{url_for('logout')}}">ログアウト</a>
-    </br>
-    </br>
-    </br>
-    <a class="button" href="{{url_for('admin.report_search')}}">就活報告書検索</a></br>
-    </br>
-    </br>
-    </br>
-    <a class="button" href="{{url_for('admin.student_search')}}">学生検索</a></br>
-    </br>
-    </br>
-    </br>
-    <a class="button" href="{{url_for('admin.teacher_list')}}">教員一覧</a></br>
-    </br>
-    </br>
-    </br>
-    <a class="button" href="{{url_for('admin.teacher_register')}}">教員登録</a></br>
+    <div style="text-align: center;">
+        <h3>管理者メニュー</h3>
+        </br>
+        <a class="button" href="{{url_for('admin.report_search')}}">就活報告書検索</a></br>
+        </br>
+        </br>
+        </br>
+        <a class="button" href="{{url_for('admin.student_search')}}">学生検索</a></br>
+        </br>
+        </br>
+        </br>
+        <a class="button" href="{{url_for('admin.teacher_list')}}">教員一覧</a></br>
+        </br>
+        </br>
+        </br>
+        <a class="button" href="{{url_for('admin.teacher_register')}}">教員登録</a></br>
+    </div>
     {% endblock %}
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
