@@ -5,14 +5,22 @@
 {% endblock %}
  
 {% block content %}
-    <h3>教員登録画面</h3>
+<div id = "form">
+    <h3 class = "form-title">教員登録画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
     <form action="{{url_for('admin.teacher_register_exe')}}"method="post">
-        ユーザー名：<input type="text"name="name" value="{{name}}"><br>
-        メール：<input type="text"name="mail" value="{{mail}}"><br>
-        パスワード：<input type="password"name="password" value="{{password}}"><br>
-        <button type="submit">登録</button>
+        <p>ユーザー名</p>
+        <p class = "name"><input type="text"name="name" value="{{name}}"></p>
+
+        <p>メール</p>
+        <p class = "name"><input type="text"name="mail" value="{{mail}}"></p>
+
+        <p>パスワード</p>
+        <p><input type="password"name="password" value="{{password}}"></p>
+
+        <p class = "submit"><button type="submit">登録</button></p>
     </form>
+</div>
 {% endblock %}
