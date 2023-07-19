@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "admin_top.html" %}
+
+{% block title %}
+<title>教員＿アカウント画面</title>
+{% endblock %}
+ 
+{% block content %}
     <h3>アカウント情報画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
@@ -15,5 +13,4 @@
     <p>メール：{{ account[0][1] }}</p></br>
     <a href="{{url_for('teacher.account_update')}}">アカウント編集</a>
     <a href="{{url_for('teacher.teacher_top')}}">戻る</a>
-</body>
-</html>
+{% endblock %}
