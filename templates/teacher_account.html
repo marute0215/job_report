@@ -5,12 +5,14 @@
 {% endblock %}
  
 {% block content %}
-    <h3>アカウント情報画面</h3>
+<div id ="form">
+    <h3 class="form-title">アカウント情報画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
-    <p>氏名：{{ account[0][2] }}</p></br>
-    <p>メール：{{ account[0][1] }}</p></br>
+    <p class ="name">氏名：{{ account[0][2] }}</p>
+    <p class ="name">メール：{{ account[0][1] }}</p>
     <a href="{{url_for('teacher.account_update')}}">アカウント編集</a>
     <a href="{{url_for('teacher.teacher_top')}}">戻る</a>
+</div>
 {% endblock %}

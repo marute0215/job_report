@@ -5,13 +5,16 @@
 {% endblock %}
  
 {% block content %}
-    <h3>アカウント編集画面</h3>
+<div id ="form">
+    <h3 class = "form-title">アカウント編集画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
     <form action="{{url_for('teacher.teacher_update_exe')}}"method="post">
 
-        パスワード：<input type="password"name="password" value="{{password}}"><br>
-        <button type="submit">更新</button>
+        <p>パスワード</p>
+        <p class ="name"><input type="password"name="password" value="{{password}}"></p>
+        <p class = "submit"><button type="submit">更新</button></p>
     </form>
+</div>
 {% endblock %}

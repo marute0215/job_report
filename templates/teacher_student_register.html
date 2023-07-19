@@ -5,25 +5,31 @@
 {% endblock %}
  
 {% block content %}
-    <h3>学生登録画面</h3>
+<div id="form">
+    <h3 class= "form-title">学生登録画面</h3>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
     <form action="{{url_for('teacher.student_register_exe')}}"method="post">
-        <input type="hidden"name="name" value="未登録"><br>
-        <input type="hidden"name="mail" value="未登録"><br>
-        <input type="hidden"name="grade" value="未登録"><br>
-        <input type="hidden"name="class" value="未登録"><br>
-        入学年度：令和<input type="text"name="year" value="{{year}}">年度<br>
-        入学年：西暦下２桁<input type="text"name="year2" value="{{year2}}">年<br>
-        学科:
+        <input type="hidden"name="name" value="未登録">
+        <input type="hidden"name="mail" value="未登録">
+        <input type="hidden"name="grade" value="未登録">
+        <input type="hidden"name="class" value="未登録">
+        <p class="name">入学年度：令和<input type="text"name="year" value="{{year}}">年度</p>
+        <p class= "name">入学年：西暦下２桁<input type="text"name="year2" value="{{year2}}">年</p>
+        <p>学科</p>
+        <p class = "name">
         <select size="1" name="department" id="office54">
             <option value="11">情報システム科</option>
             <option value="12">情報ビジネス科</option>
             <option value="13">高度情報工学科</option>
             <option value="14">デザイン科</option>
-        </select><br>
-        クラス人数:<input type="text"name="class_num" value="{{class_num}}">人<br>
-        <button type="submit">登録</button>
+        </select>
+        </p>
+
+        <p>クラス人数</p>
+        <p class="name"><input type="text"name="class_num" value="{{class_num}}">人</p>
+        <p class = "submit"><button type="submit">検索</button></p>
     </form>
+</div>
 {% endblock %}
