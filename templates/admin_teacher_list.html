@@ -5,7 +5,12 @@
 {% endblock %}
  
 {% block content %}
+<div style="text-align: left;">
+    <a href="{{url_for('admin.admin_top')}}">ホームへ</a>
+</div>
+<div style="text-align: center;">
     <h3>検索結果</h3>
+</div>
   <table class="table table-striped">
     <thead>
         <tr>
@@ -27,7 +32,9 @@
             <td>{{ teacher[1] }}</td>
         </tr>
         {% endfor %}
-        <button type="submit">削除する</button>
+        <div style="text-align: left;">
+            <p class = "submit2"><button type="submit">削除する</button></p>
+        </div>
     </form>
     </tbody>
   </table>

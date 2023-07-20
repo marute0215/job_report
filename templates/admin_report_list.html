@@ -5,8 +5,13 @@
 {% endblock %}
  
 {% block content %}
+<div style="text-align: left;">
+    <a href="{{url_for('admin.admin_top')}}">ホームへ</a>
+</div>
 
-<h3>就活報告書検索一覧画面</h3>
+<div style="text-align: center;">
+    <h3>就活報告書検索一覧画面</h3>
+</div>
 {% if error != null %}
 <p style="color:red">{{error}}</p>
 {% endif %}

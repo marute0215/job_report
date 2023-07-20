@@ -5,6 +5,9 @@
 {% endblock %}
  
 {% block content %}
+<div style="text-align: left;">
+    <a href="{{url_for('admin.admin_top')}}">ホームへ</a>
+</div>
 <div id ="form">
 
 <h3 class="form-title">就活報告書詳細画面</h3>
@@ -40,9 +43,8 @@
     <form action="{{url_for('admin.report_del')}}" method="post">
         <input type="hidden" name="student_num" value={{ detail[0][0] }}>
         <input type="hidden" name="company" value={{ detail[0][2] }}>
-        <p class = "submit"><button type="submit">削除する</button></p>
+        <p class = "submit2"><button type="submit">削除する</button></p>
     </form>
 
-    <a href="{{url_for('admin.admin_top')}}">ホームへ</a>
 </div>
 {% endblock %}
