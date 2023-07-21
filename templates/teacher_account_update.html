@@ -16,7 +16,9 @@
     <form action="{{url_for('teacher.teacher_update_exe')}}"method="post">
 
         <p>パスワード</p>
-        <p class ="name"><input type="password"name="password" value="{{password}}"></p>
+        <p class ="pass"><input type="password"name="password" value="{{password}}"></p>
+        <p>確認用パスワード</p>
+        <p class ="pass"><input type="password"name="password2" value="{{password2}}"></p>
         <p class = "submit"><button type="submit">更新</button></p>
     </form>
 </div>

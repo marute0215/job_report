@@ -6,7 +6,7 @@
  
 {% block content %}
 <div id="form">
-    <h3 "form-title">アカウント編集画面</h3>
+    <p class = "form-title">アカウント編集画面</p>
     {% if error != null %}
     <p style="color:red">{{error}}</p>
     {% endif %}
@@ -47,8 +47,12 @@
         </select>
         </P>
 
+        <h3 class="form-title">パスワード設定</h3>
+
         <p>パスワード</p>
         <p class = "name"><input type="password"name="password" value="{{password}}"></p>
+        <p>確認用パスワード</p>
+        <p class = "name"><input type="password"name="password2" value="{{password2}}"></p>
         
         <p class = "submit"><button type="submit">更新</button></p>
     </form>

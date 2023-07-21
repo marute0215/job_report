@@ -36,17 +36,17 @@ def login():
         if user_type == "admin":
             session['user'] =True# session にキー：'user', バリュー:True を追加
             session.permanent=True# session の有効期限を有効化
-            app.permanent_session_lifetime = timedelta(minutes=30) # session の有効期限を 5 分に設定
+            app.permanent_session_lifetime = timedelta(minutes=60) # session の有効期限を 5 分に設定
             return redirect(url_for('admin.admin_top'))
         elif user_type == "teacher":
             session['user'] =True# session にキー：'user', バリュー:True を追加
             session.permanent=True# session の有効期限を有効化
-            app.permanent_session_lifetime = timedelta(minutes=30) # session の有効期限を 5 分に設定
+            app.permanent_session_lifetime = timedelta(minutes=60) # session の有効期限を 5 分に設定
             return redirect(url_for('teacher.teacher_top'))
         elif user_type == "student":
             session['user'] =True# session にキー：'user', バリュー:True を追加
             session.permanent=True# session の有効期限を有効化
-            app.permanent_session_lifetime = timedelta(minutes=30) # session の有効期限を 5 分に設定
+            app.permanent_session_lifetime = timedelta(minutes=60) # session の有効期限を 5 分に設定
             return redirect(url_for('mypage'))
         
     else:
@@ -140,9 +140,17 @@ def student_update_exe():
     clas=request.form.get('class')
     department=request.form.get('department')
     password=request.form.get('password')
+    password2=request.form.get('password2')
 
-    db.update_student_account(student_num,name,mail,grade,clas,department,password)
-    return redirect(url_for('mypage'))# Redirect でindex()にGet アクセス 
+    if password == password2:
+        db.update_student_account(student_num,name,mail,grade,clas,department,password)
+        return redirect(url_for('mypage'))# Redirect でindex()にGet アクセス 
+    else:
+        error='パスワードが一致していません。'
+        return render_template('student_account_update.html', error=error) 
+    
+    
+   
 
 @app.route('/report_update_list', methods=['GET'])
 def report_update_list():

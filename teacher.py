@@ -127,6 +127,11 @@ def account_update():
 def teacher_update_exe():
     name = session['user_name']
     password=request.form.get('password')
+    password2=request.form.get('password2')
 
-    db.update_teacher_account(name, password)
-    return redirect(url_for('teacher.teacher_top'))
+    if password == password2:
+        db.update_teacher_account(name, password)
+        return redirect(url_for('teacher.teacher_top'))
+    else:
+        error='パスワードが一致していません。'
+        return render_template('teacher_account_update.html', error=error) 
