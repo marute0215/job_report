@@ -5,6 +5,9 @@
 {% endblock %}
  
 {% block content %}
+<div style="text-align: left;">
+    <a href="{{url_for('mypage')}}">ホームへ</a>
+</div>
 <div id="form">
     <p class = "form-title">アカウント編集画面</p>
     {% if error != null %}

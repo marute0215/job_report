@@ -5,6 +5,9 @@
 {% endblock %}
  
 {% block content %}
+<div style="text-align: left;">
+    <a href="{{url_for('mypage')}}">ホームへ</a>
+</div>
 <div id="form">
     <h3 class="form-title">アカウント情報画面</h3>
     {% if error != null %}
