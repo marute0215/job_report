@@ -21,6 +21,8 @@
             <th>学籍番号</th>
             <th>氏名</th>
             <th>登録日</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +40,14 @@
                     <input type="hidden" name="student_num" value={{ report[0] }}>
                     <input type="hidden" name="company" value={{ report[1] }}>
 					<input type="submit" value="編集">
+				</form>
+			</td>
+            <td>
+				<form action="{{url_for('for_tmail')}}" method="post">
+					<input type="hidden" name="student_num" value={{ report[0] }}>
+                    <input type="hidden" name="company" value={{ report[1] }}>
+                    <input type="hidden" name="name" value={{ report[5] }}>
+					<input type="submit" value="作成完了通知">
 				</form>
 			</td>
         </tr>

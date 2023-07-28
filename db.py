@@ -169,7 +169,7 @@ def admin_delete_teacher(sa):
 
 
 def insert_student(student_num2,name, mail,grade,clas,department3,password):
-    sql='INSERT INTO StudentAccount VALUES (default,%s, %s, %s, %s, %s, %s, %s, %s)'
+    sql='INSERT INTO StudentAccount VALUES (default,%s, %s, %s, %s, %s, %s, null, %s, %s)'
     salt=get_salt() # ソルトの生成
     hashed_password=get_hash(password, salt) # 生成したソルトでハッシュ
    
@@ -403,8 +403,20 @@ def select_account(student_num):
     connection.close()
     return rows
 
-def update_student_account(student_num,name,mail,grade,clas,department,password):
-    sql='UPDATE StudentAccount SET name = %s, mail = %s, grade = %s, class = %s, department = %s, salt = %s, password = %s  WHERE student_num = %s'
+def select_account_m(student_num):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = "SELECT TeacherAccount.mail FROM StudentAccount INNER JOIN TeacherAccount ON StudentAccount.teacher_name = teacheraccount.name WHERE student_num = %s "
+    
+    cursor.execute(sql, (student_num, ))
+    rows = cursor.fetchone()
+    
+    cursor.close()
+    connection.close()
+    return rows
+
+def update_student_account(student_num,name,mail,grade,clas,department,teacher_name,password):
+    sql='UPDATE StudentAccount SET name = %s, mail = %s, grade = %s, class = %s, department = %s,teacher_name = %s, salt = %s, password = %s  WHERE student_num = %s'
     
     salt=get_salt() # ソルトの生成
     hashed_password=get_hash(password, salt) # 生成したソルトでハッシュ
@@ -412,7 +424,7 @@ def update_student_account(student_num,name,mail,grade,clas,department,password)
     connection=get_connection()
     cursor=connection.cursor()
         
-    cursor.execute(sql, (name,mail,grade,clas,department, salt, hashed_password,student_num))
+    cursor.execute(sql, (name,mail,grade,clas,department,teacher_name, salt, hashed_password,student_num))
     connection.commit()
         
 

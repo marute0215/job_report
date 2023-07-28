@@ -1,5 +1,5 @@
 from flask import Flask,Blueprint, render_template, request, redirect, url_for, session
-import db, string, random
+import db, string, random, mail
 from datetime import timedelta
 
 
@@ -79,8 +79,14 @@ def teacher_report_detail():
 def teacher_approval():
     student_num = request.form.get('student_num')
     company=request.form.get('company')
+    name = request.form.get('name')
     teacher_approval = request.form.get('teacher_approval')
     
+    to ="t.takahashi.sys22@morijyobi.ac.jp"
+    subject = "担任承認完了通知"
+    body = "氏名:"+name+"さんの、会社名："+company+"の就活報告書を担任が承認しました。確認してください" 
+    
+    mail.send_mail(to, subject, body)
     db.teacher_approval(company, student_num, teacher_approval)
     
     return redirect(url_for('teacher.teacher_top'))

@@ -33,8 +33,7 @@ def teacher_register_exe():
     count=db.insert_teacher(name, mail,password)
     
     if count==1:
-        msg='登録が完了しました。'
-        return redirect(url_for('admin_top', msg=msg))# Redirect でindex()にGet アクセス
+        return render_template(url_for('admin_top'))# Redirect でindex()にGet アクセス
     else:
         error='登録に失敗しました。'
         return render_template('admin_teacher_register.html', error=error)

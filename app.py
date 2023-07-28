@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import db, string, random
+import db, string, random, mail
 from datetime import timedelta
 from teacher import teacher_bp
 from admin import admin_bp
@@ -139,11 +139,12 @@ def student_update_exe():
     grade=request.form.get('grade')
     clas=request.form.get('class')
     department=request.form.get('department')
+    teacher_name=request.form.get('teacher_name')
     password=request.form.get('password')
     password2=request.form.get('password2')
 
     if password == password2:
-        db.update_student_account(student_num,name,mail,grade,clas,department,password)
+        db.update_student_account(student_num,name,mail,grade,clas,department, teacher_name,password)
         return redirect(url_for('mypage'))# Redirect でindex()にGet アクセス 
     else:
         error='パスワードが一致していません。'
@@ -195,6 +196,28 @@ def report_update_exe():
 def logout():
     session.pop('user', None) # session の破棄
     return redirect(url_for('index')) # ログイン画面にリダイレクト
+
+
+@app.route('/for_tmail', methods=['POST'])
+def for_tmail():
+    student_num=request.form.get('student_num')
+    company=request.form.get('company')
+    name=request.form.get('name')
+    
+    t = db.select_account_m(student_num)
+    
+    to, = t
+        
+    subject = "就活報告書作成完了通知"
+    
+    body = "氏名:"+name+"さんの、会社名："+company+"の就活報告書が作成完了しました。確認してください"   
+    
+    # メール送信
+    mail.send_mail(to, subject, body)
+    return redirect(url_for('mypage'))
+
+
+
 
 if __name__ == '__main__':
 	app.run(debug=True)

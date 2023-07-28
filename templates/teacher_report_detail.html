@@ -29,6 +29,7 @@
 
     <form action="{{url_for('teacher.teacher_approval')}}" method="post">
         <input type="hidden" name="student_num" value={{ detail[0][0] }}>
+        <input type="hidden" name="name" value={{ detail[0][1] }}>
         <input type="hidden" name="company" value={{ detail[0][2] }}>
         <input type="hidden" name="teacher_approval" value="承認">
         <p class = "submit"><button type="submit">承認</button></p>
