@@ -129,7 +129,7 @@ def teacher_list():
 def admin_delete_teacher(sa):
     connection = get_connection()
     cursor = connection.cursor()
-    sql = "DELETE FROM teacheraccount WHERE mail = %s;"
+    sql = "DELETE FROM teacheraccount WHERE name = %s;"
     
     cursor.execute(sql, (sa,))
     connection.commit()

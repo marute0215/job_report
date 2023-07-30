@@ -30,13 +30,9 @@ def teacher_register_exe():
         error='パスワードが未入力です'
         return render_template('admin_teacher_register.html', error=error)
     
-    count=db.insert_teacher(name, mail,password)
+    db.insert_teacher(name, mail,password)
     
-    if count==1:
-        return render_template(url_for('admin_top'))# Redirect でindex()にGet アクセス
-    else:
-        error='登録に失敗しました。'
-        return render_template('admin_teacher_register.html', error=error)
+    return render_template('admin_top.html')# Redirect でindex()にGet アクセス
     
 @admin_bp.route('/report_search')
 def report_search():
